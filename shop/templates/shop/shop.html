@@ -4,26 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Shop - GadgetStore</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- For cart icon -->
+    <style>
+        .navbar {
+            border-bottom: 2px solid #ccc;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        footer {
+            background-color: #222;
+            color: white;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Navigation Bar -->
     <header class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">GadgetStore</a>
-        <div class="ml-auto">
-            <form class="form-inline">
-                <input class="form-control mr-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/shop/">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="/collection/">Collection</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/reviews/">Customer Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="/track-order/">Track Your Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <a href="#" class="ml-3 btn btn-outline-light">Cart</a>
+            <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
         </div>
     </header>
 
+    <!-- Products Section -->
     <div class="container my-5">
         <h2>All Products</h2>
         <div class="row">
             {% for product in products %}
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card mb-4">
                         <img src="{{ product.image.url }}" class="card-img-top" alt="Product image">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
@@ -36,8 +73,14 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2025 GadgetStore | <a href="mailto:info@gadgetstore.com" class="text-white">Contact Us</a>
     </footer>
+
+    <!-- Bootstrap & jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

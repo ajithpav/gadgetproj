@@ -13,3 +13,6 @@ def product_detail(request, product_id):
 def shop(request):
     products = Product.objects.all()
     return render(request, 'shop/shop.html', {'products': products})
+
+def about(request):
+    return render(request, 'shop/about.html')

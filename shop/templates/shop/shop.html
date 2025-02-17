@@ -3,9 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - GadgetStore</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- For cart icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> 
     <style>
         .navbar {
             border-bottom: 2px solid #ccc;
@@ -30,10 +31,9 @@
 </head>
 <body>
 
-    <!-- Navigation Bar -->
     <header class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">GadgetStore</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -47,21 +47,20 @@
                 <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
             </form>
             <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
         </div>
     </header>
 
-    <!-- Products Section -->
     <div class="container my-5">
         <h2>All Products</h2>
         <div class="row">
             {% for product in products %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <img src="{{ product.image.url }}" class="card-img-top" alt="Product image">
+                        <img src="{{ product.image.url|default:'https://source.unsplash.com/400x300/?electronics,gadgets' }}" class="card-img-top" alt="Product image">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">{{ product.description|slice:":100" }}...</p>
@@ -69,16 +68,28 @@
                         </div>
                     </div>
                 </div>
+            {% empty %}
+                <!-- Display Dummy Products When No Data is Available -->
+                {% for i in "123456" %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="https://source.unsplash.com/400x300/?electronics,gadgets" class="card-img-top" alt="Dummy Product">
+                            <div class="card-body">
+                                <h5 class="card-title">Sample Gadget {{ forloop.counter }}</h5>
+                                <p class="card-text">This is a dummy product description. High-quality, innovative, and affordable.</p>
+                                <a href="#" class="btn btn-primary">View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             {% endfor %}
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2025 GadgetStore | <a href="mailto:info@gadgetstore.com" class="text-white">Contact Us</a>
     </footer>
 
-    <!-- Bootstrap & jQuery JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

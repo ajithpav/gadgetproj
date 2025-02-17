@@ -1,0 +1,48 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">GadgetStore</a>
+    </header>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ product.image.url }}" class="img-fluid" alt="Product image">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p><strong>Price:</strong> ${{ product.price }}</p>
+                <p><strong>Category:</strong> {{ product.category }}</p>
+                {% if product.video_url %}
+                    <div>
+                        <h4>Product Video</h4>
+                        <iframe width="100%" height="315" src="{{ product.video_url }}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                {% endif %}
+                <a href="#" class="btn btn-success mt-3">Add to Cart</a>
+            </div>
+        </div>
+        <h3>Customer Reviews</h3>
+        <div>
+            {% for review in reviews %}
+                <div class="border p-3 my-2">
+                    <strong>{{ review.customer_name }} ({{ review.rating }} stars)</strong>
+                    <p>{{ review.comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2025 GadgetStore | <a href="mailto:info@gadgetstore.com" class="text-white">Contact Us</a>
+    </footer>
+</body>
+</html>

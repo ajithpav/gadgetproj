@@ -1,0 +1,71 @@
+# Django-specific files
+*.pyc
+*.pyo
+__pycache__/
+.DS_Store
+.idea/
+.vscode/
+
+# Media files
+media/
+
+# Static files (if using a separate directory)
+static/
+
+# Database files
+db.sqlite3
+db.sqlite3-journal
+
+# Admin media
+admin/
+
+# Tests
+*.test*
+tests/
+
+# Coverage reports
+coverage/
+
+# Compiled JavaScript/CSS
+*.js.map
+*.css.map
+
+# Local settings files
+local_settings.py
+env/
+
+# Docker-related files
+docker-compose.yml
+docker-compose.override.yml
+Dockerfile*
+
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+
+# Miscellaneous
+*.log
+*.pid
+
+# Virtual environment
+.venv/
+venv/
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Build files
+build/
+
+# Deployment files
+deploy/
+
+# Other common files
+*.swp
+*~
+.ropeproject
+
+# Git-specific files
+.git/

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Product, Review
+from django.shortcuts import render
 
 def home(request):
     featured_products = Product.objects.all()[:5]
@@ -13,3 +14,9 @@ def product_detail(request, product_id):
 def shop(request):
     products = Product.objects.all()
     return render(request, 'shop/shop.html', {'products': products})
+
+
+
+def collection(request):
+    return render(request, 'shop/collection.html')
+

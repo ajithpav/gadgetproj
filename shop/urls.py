@@ -12,4 +12,5 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('track-order/', views.track_order, name='track_order'),
     path('collection/couple-case/', views.couples_case, name='couple-case'),
+    path('collection/anime-case/', views.anime_case, name='anime-case'),
 ]

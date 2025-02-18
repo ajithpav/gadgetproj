@@ -116,3 +116,5 @@ def about(request):
 def couples_case(request):
     return render(request, 'shop/couples.html')
 
+def anime_case(request):
+    return render(request, 'shop/anime_case.html')

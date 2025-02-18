@@ -1,10 +1,12 @@
 {% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ product.name }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -41,8 +43,46 @@
         </div>
     </div>
 
-    <footer class="bg-dark text-white text-center py-3">
-        &copy; 2025 GadgetStore | <a href="mailto:info@gadgetstore.com" class="text-white">Contact Us</a>
+    <!-- Footer start -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Navigation Links -->
+            <div class="footer-nav">
+                <a href="/search">Search</a>
+                <a href="/contact">Contact</a>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/refund-policy">Refund Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+                <a href="/shipping-policy">Shipping Policy</a>
+            </div>
+    
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <ul>
+                    <li><a href="tel:+919840904868">+91 9840904868</a></li>
+                    <li><a href="mailto:gadgetsdestiny@gmail.com">gadgetsdestiny@gmail.com</a></li>
+                    <li>Pondicherry, India</li>
+                </ul>
+            </div>
+    
+            <!-- Newsletter & Social -->
+            <div class="newsletter">
+                <h3>Subscribe to our emails</h3>
+                <div class="email-form">
+                    <input type="email" placeholder="Email" class="email-input">
+                    <button type="submit" class="submit-btn">→</button>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="facebook">Facebook</a>
+                    <a href="#" class="instagram">Instagram</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025, Gadgets Destiny <a href="https://shopify.com">Powered by Shopify</a></p>
+        </div>
     </footer>
 </body>
 </html>

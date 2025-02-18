@@ -3,25 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About Us - GadgetStore</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> 
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .gif-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust height as needed */
+    margin: 20px 0;
+}
+
+.gif-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Style for <h1> tag */
+    h1 {
+    font-size: 3rem; /* Large font size */
+    font-weight: 700; /* Bold font weight */
+    color: #333; /* Dark color for text */
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    font-family: 'Arial', sans-serif; /* Clean sans-serif font */
+    text-transform: uppercase; /* Uppercase text */
+}
+
+/* Style for <p> tag */
+p {
+    font-size: 1.25rem; /* Slightly larger text for paragraph */
+    color: #555; /* Lighter color for text */
+    text-align: center; /* Center align the paragraph */
+    max-width: 800px; /* Limit the width for better readability */
+    margin: 0 auto 20px; /* Center the text and space below */
+    font-family: 'Arial', sans-serif; /* Clean sans-serif font */
+    line-height: 1.6; /* Increase line height for readability */
+}
+
+        .navbar {
+            border-bottom: 2px solid #ccc;
+        }
+        .banner {
+            background: url('https://source.unsplash.com/1600x500/?technology,team') no-repeat center center/cover;
+            color: white;
+            padding: 70px 0;
             text-align: center;
         }
-        h1 {
-            color: #007bff;
+        .content {
+            padding: 40px;
         }
-        p {
-            font-size: 18px;
-            color: #333;
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 20px 0;
         }
     </style>
 </head>
 <body>
-    <h1>About Us</h1>
-    <p>Welcome to our website! We are dedicated to providing the best services and solutions for our customers.</p>
-    <p>Our mission is to deliver high-quality products with excellent customer support.</p>
+
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">GadgetStore</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/shop/">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="/collection/">Collection</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/reviews/">Customer Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="/track-order/">Track Your Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+            <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+    </header>
+
+    
+        <h1>Welcome to GadgetStore</h1>
+        
+    
+    <div class="gif-container">
+        <img src="data:image/jpeg;base64,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" alt="Animated GIF">
+    </div>
+    <p>Innovating the future, one step at a time.</p>
+    
+    
+
+    <section class="container content text-center">
+        <h2>Our Story</h2>
+        <p>GadgetStore started with a vision to revolutionize e-commerce by providing top-quality products with seamless customer experience. 
+           With cutting-edge technology and customer-first policies, we are dedicated to bringing you the best in innovation.</p>
+        
+        <h2>Our Mission</h2>
+        <p>Our mission is to empower people with the latest technology and best-in-class services, ensuring convenience and satisfaction.</p>
+        
+        <h2>Why Choose Us?</h2>
+        <ul class="list-unstyled">
+            <li><i class="fas fa-check-circle text-success"></i> High-quality products</li>
+            <li><i class="fas fa-check-circle text-success"></i> Exceptional customer support</li>
+            <li><i class="fas fa-check-circle text-success"></i> Fast and reliable shipping</li>
+            <li><i class="fas fa-check-circle text-success"></i> Secure payments</li>
+        </ul>
+    </section>
+
+    <footer class="text-center">
+        &copy; 2025 GadgetStore | <a href="mailto:support@GadgetStore.com" class="text-white">Contact Us</a>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

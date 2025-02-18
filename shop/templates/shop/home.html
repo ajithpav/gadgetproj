@@ -1,4 +1,5 @@
 {% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +30,67 @@
             background-color: #222;
             color: white;
         }
+
+        .img-container {
+            border: 10px solid white;
+            border-radius: 15px;
+            overflow: hidden;
+            display: inline-block;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            background-color: #fff;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+        }
+
+        .img-container img {
+            width: 1200px;
+            height: 800px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* GIF Container */
+        .gif-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gif-gallery img {
+            width: 250px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gif-gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .collection-gif-gallery {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .collection-gif-gallery img {
+        width: 350px; /* Adjust width */
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .collection-gif-gallery img:hover {
+        transform: scale(1.1);
+    }
     </style>
 </head>
 <body>
@@ -57,11 +119,45 @@
         </div>
     </header>
 
-    <!-- YouTube Video Embed Section -->
-    <div class="container my-5">
-        <h2>Featured Video</h2>
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/-rBtJG0PF_o?si=Ya8xNLtgMmG_7hoX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="img-container">
+        <img src="{% static 'images/home_img.webp' %}" alt="Styled Image">
+    </div>
+
+    <!-- GIF Gallery -->
+    <div class="gif-gallery">
+        <img src="{% static 'images/gif1.webp' %}" alt="GIF 1">
+        <img src="{% static 'images/gif1.webp' %}" alt="GIF 2">
+        <img src="{% static 'images/gif1.webp' %}" alt="GIF 3">
+        <img src="{% static 'images/gif1.webp' %}" alt="GIF 4">
+    </div>
+
+    <!-- Collection GIF Section -->
+    <h2 class="text-center mt-5">Our Latest Collections</h2>
+    <div class="collection-gif-gallery">
+        <img src="{% static 'anime_img/gif2.webp' %}" alt="Collection 1">
+        <img src="{% static 'anime_img/img1.webp' %}" alt="Collection 2">
+        <img src="{% static 'anime_img/anime1.jpg' %}" alt="Collection 3">
+    </div>
+    <!-- Couple GIF Section -->
+
+    <div class="collection-gif-gallery">
+        <div class="product-item">
+            <img src="{% static 'couple_img/couple1.jpg' %}" alt="Clear Case">
+            <div class="product-title">
+                Clear Case →
+            </div>
+        </div>
+        <div class="product-item">
+            <img src="{% static 'couple_img/couple2.webp' %}" alt="Couple Cases">
+            <div class="product-title">
+                Couple Cases →
+            </div>
+        </div>
+        <div class="product-item">
+            <img src="{% static 'couple_img/couple3.jpg' %}" alt="Designer Phone Case">
+            <div class="product-title">
+                Designer Phone case →
+            </div>
         </div>
     </div>
 

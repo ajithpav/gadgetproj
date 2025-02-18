@@ -96,6 +96,7 @@ def collection(request):
 
 
 
+
 def reviews(request):
     # Fetch all reviews
     reviews = Review.objects.all()
@@ -111,3 +112,7 @@ def reviews(request):
 
 def about(request):
     return render(request, 'shop/about.html')
+
+def couples_case(request):
+    return render(request, 'shop/couples.html')
+

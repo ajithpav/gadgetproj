@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - GadgetStore</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
         .navbar {
             border-bottom: 2px solid #ccc;
@@ -22,6 +22,18 @@
         .card-img-top {
             height: 200px;
             object-fit: cover;
+        }
+        .review-card {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .review-rating i {
+            color: #ffa41c; /* Amazon-like gold stars */
+        }
+        .verified-badge {
+            font-size: 12px;
+            color: #007600; /* Amazon-like green text */
         }
         footer {
             background-color: #222;
@@ -54,7 +66,53 @@
         </div>
     </header>
 
-    <h1>Customer Review</h1>
+    <div class="container mt-5">
+        <h2 class="mb-4">Customer Reviews</h2>
+
+        <!-- Review 1 -->
+        <div class="review-card">
+            <h5>John Doe</h5>
+            <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i> <!-- 4 out of 5 stars -->
+            </div>
+            <p class="verified-badge">✔ Verified Purchase</p>
+            <p><strong>Great Product!</strong> - The build quality is amazing and the battery lasts long.</p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+            <h5>Jane Smith</h5>
+            <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i> <!-- 3 out of 5 stars -->
+            </div>
+            <p class="verified-badge">✔ Verified Purchase</p>
+            <p><strong>Good but overpriced.</strong> - The product is fine, but I think it's a bit expensive.</p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+            <h5>Mark Wilson</h5>
+            <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> <!-- 5 out of 5 stars -->
+            </div>
+            <p class="verified-badge">✔ Verified Purchase</p>
+            <p><strong>Best purchase ever!</strong> - Highly recommend! The features are top-notch.</p>
+        </div>
+
+        <button class="btn btn-primary">See More Reviews</button>
+    </div>
 
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2025 GadgetStore | <a href="mailto:info@gadgetstore.com" class="text-white">Contact Us</a>
@@ -63,5 +121,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

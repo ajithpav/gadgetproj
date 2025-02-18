@@ -1,27 +1,69 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Shop - GadgetStore</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            text-align: center;
+        .navbar {
+            border-bottom: 2px solid #ccc;
         }
-        h1 {
-            color: #007bff;
+        .card {
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
         }
-        p {
-            font-size: 18px;
-            color: #333;
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        footer {
+            background-color: #222;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <h1>About Us</h1>
-    <p>Welcome to our website! We are dedicated to providing the best services and solutions for our customers.</p>
-    <p>Our mission is to deliver high-quality products with excellent customer support.</p>
+
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">GadgetStore</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/shop/">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="/collection/">Collection</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/reviews/">Customer Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="/track-order/">Track Your Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+            <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+    </header>
+
+    <h5> Welcome to our website! We are dedicated to providing the best services and solutions for our customers.
+
+        Our mission is to deliver high-quality products with excellent customer support.</h5>
+
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2025 GadgetStore | <a href="mailto:info@gadgetstore.com" class="text-white">Contact Us</a>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

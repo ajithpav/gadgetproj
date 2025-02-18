@@ -33,24 +33,42 @@
         }
 
         .img-container {
+            position: relative;
+            width: 1200px; /* Set container width */
+            height: 800px; /* Set container height */
             border: 10px solid white;
             border-radius: 15px;
             overflow: hidden;
-            display: inline-block;
+            display: block;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             padding: 10px;
             background-color: #fff;
             margin: 20px auto;
-            display: block;
             text-align: center;
         }
 
-        .img-container img {
-            width: 1200px;
-            height: 800px;
+        /* Background Image */
+        .background-img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
+
+        /* Centered Tom & Jerry Image */
+        .centered-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;  /* Adjust as per need */
+            height: auto;
+            z-index: 2;
+        }
+
 
         /* GIF Container */
         .gif-gallery {
@@ -138,8 +156,9 @@
     </header>
 
     <div class="img-container">
-        <img src="{% static 'images/home_img.webp' %}" alt="Styled Image">
-    </div>
+        <img class="background-img" src="{% static 'images/home1.webp' %}" alt="Background">
+        <img class="centered-img" src="{% static 'images/home1.webp' %}" alt="Phone Case">
+    </div>    
 
     <!-- GIF Gallery -->
     <div class="gif-gallery">

@@ -5,46 +5,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - GadgetStore</title>
+    <title>Customer Reviews - GadgetStore</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(-45deg, #111111, #d4380c, #e4cbcb, #ffd3a5);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .navbar {
             border-bottom: 2px solid #ccc;
         }
-        .card {
-            border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-        }
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+
         .review-card {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
         .review-rating i {
-            color: #ffa41c; /* Amazon-like gold stars */
+            color: #ffa41c;
         }
-        .verified-badge {
-            font-size: 12px;
-            color: #007600; /* Amazon-like green text */
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
-        footer {
-            background-color: #222;
+
+        .pagination a {
             color: white;
+            background: #007bff;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .pagination a:hover {
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
 
+    <!-- Restored Original Navbar -->
     <header class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">GadgetStore</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -57,10 +75,10 @@
             
                 <!-- Dropdown for Collection -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="collectionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="collectionDropdown" role="button" data-toggle="dropdown">
                         Collection
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="collectionDropdown">
+                    <div class="dropdown-menu">
                         <a class="dropdown-item" href="/collection/fruits/">Fruits</a>
                         <a class="dropdown-item" href="/collection/vegetables/">Vegetables</a>
                         <a class="dropdown-item" href="/collection/exotic/">Exotic Items</a>
@@ -69,7 +87,6 @@
                     </div>
                 </li>
                 
-            
                 <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="/reviews/">Customer Reviews</a></li>
                 <li class="nav-item"><a class="nav-link" href="/track-order/">Track Your Order</a></li>
@@ -83,58 +100,23 @@
         </div>
     </header>
 
+    <!-- Customer Reviews Section -->
     <div class="container mt-5">
-        <h2 class="mb-4">Customer Reviews</h2>
+   
 
-        <!-- Review 1 -->
-        <div class="review-card">
-            <h5>John Doe</h5>
-            <div class="review-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i> <!-- 4 out of 5 stars -->
-            </div>
-            <p class="verified-badge">✔ Verified Purchase</p>
-            <p><strong>Great Product!</strong> - The build quality is amazing and the battery lasts long.</p>
+        <!-- Reviews -->
+        <div id="reviews-container"></div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <a href="#" id="prevPage">← Previous</a>
+            <a href="#" id="nextPage">Next →</a>
         </div>
-
-        <!-- Review 2 -->
-        <div class="review-card">
-            <h5>Jane Smith</h5>
-            <div class="review-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i> <!-- 3 out of 5 stars -->
-            </div>
-            <p class="verified-badge">✔ Verified Purchase</p>
-            <p><strong>Good but overpriced.</strong> - The product is fine, but I think it's a bit expensive.</p>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-card">
-            <h5>Mark Wilson</h5>
-            <div class="review-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i> <!-- 5 out of 5 stars -->
-            </div>
-            <p class="verified-badge">✔ Verified Purchase</p>
-            <p><strong>Best purchase ever!</strong> - Highly recommend! The features are top-notch.</p>
-        </div>
-
-        <button class="btn btn-primary">See More Reviews</button>
     </div>
 
-    <!-- Footer start -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <!-- Navigation Links -->
             <div class="footer-nav">
                 <a href="/search">Search</a>
                 <a href="/contact">Contact</a>
@@ -143,8 +125,7 @@
                 <a href="/terms-of-service">Terms of Service</a>
                 <a href="/shipping-policy">Shipping Policy</a>
             </div>
-    
-            <!-- Contact Info -->
+
             <div class="contact-info">
                 <ul>
                     <li><a href="tel:+919840904868">+91 9840904868</a></li>
@@ -152,8 +133,7 @@
                     <li>Pondicherry, India</li>
                 </ul>
             </div>
-    
-            <!-- Newsletter & Social -->
+
             <div class="newsletter">
                 <h3>Subscribe to our emails</h3>
                 <div class="email-form">
@@ -166,16 +146,46 @@
                 </div>
             </div>
         </div>
-    
-        <!-- Copyright -->
-        <div class="footer-bottom">
+
+        <div class="footer-bottom text-center">
             <p>© 2025, Gadgets Destiny <a href="https://shopify.com">Powered by Shopify</a></p>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- JavaScript -->
+    <script>
+        const reviewsPerPage = 3;
+        let currentPage = 1;
+        const reviews = [
+            { name: "John Doe", rating: 4, text: "Great product! Battery lasts long." },
+            { name: "Jane Smith", rating: 3, text: "Good but overpriced." },
+            { name: "Mark Wilson", rating: 5, text: "Best purchase ever! Highly recommend!" },
+            { name: "Emily Davis", rating: 4, text: "Very useful and stylish!" },
+            { name: "Michael Brown", rating: 5, text: "Fantastic product, worth the price." },
+            { name: "Sarah Johnson", rating: 3, text: "Not bad, but I expected more." }
+        ];
 
+        function displayReviews() {
+            const container = document.getElementById("reviews-container");
+            container.innerHTML = "";
+            let start = (currentPage - 1) * reviewsPerPage;
+            let end = start + reviewsPerPage;
+            reviews.slice(start, end).forEach(review => {
+                container.innerHTML += `
+                    <div class="review-card">
+                        <h5>${review.name}</h5>
+                        <div class="review-rating">${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}</div>
+                        <p class="verified-badge">✔ Verified Purchase</p>
+                        <p><strong>${review.text}</strong></p>
+                    </div>
+                `;
+            });
+        }
+
+        document.getElementById("prevPage").addEventListener("click", () => { if (currentPage > 1) { currentPage--; displayReviews(); }});
+        document.getElementById("nextPage").addEventListener("click", () => { if (currentPage * reviewsPerPage < reviews.length) { currentPage++; displayReviews(); }});
+
+        displayReviews();
+    </script>
 </body>
 </html>

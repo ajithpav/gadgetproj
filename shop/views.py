@@ -8,6 +8,8 @@ from django.http import HttpResponse
 from .forms import ContactForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib import messages
+from django.http import JsonResponse
 # Simulate order tracking
 def track_order(request):
     tracking_info = None
@@ -117,10 +119,25 @@ def register_view(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Registration successful. Please log in.")
+
+            # Return JSON response for test cases
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"success": True, "message": "User registered successfully"}, status=201)
+
             return redirect('login')  # Redirect to login after successful registration
+
+        else:
+            messages.error(request, "Registration failed. Please check the form.")
+
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"success": False, "errors": form.errors}, status=400)
+
     else:
         form = UserCreationForm()
+    
     return render(request, 'shop/register.html', {'form': form})
+
 
 def login_view(request):
     """Handles user login"""

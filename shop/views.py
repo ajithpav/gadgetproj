@@ -150,3 +150,6 @@ def couples_case(request):
 
 def anime_case(request):
     return render(request, 'shop/anime_case.html')
+
+def marvel_case(request):
+    return render(request, 'shop/marvel_case.html')

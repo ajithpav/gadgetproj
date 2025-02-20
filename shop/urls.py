@@ -13,4 +13,7 @@ urlpatterns = [
     path('track-order/', views.track_order, name='track_order'),
     path('collection/couple-case/', views.couples_case, name='couple-case'),
     path('collection/anime-case/', views.anime_case, name='anime-case'),
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 ]

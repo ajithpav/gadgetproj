@@ -6,7 +6,10 @@ from django.conf import settings
 from .forms import ContactForm
 from django.http import HttpResponse
 from .forms import ContactForm
-
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib import messages
+from django.http import JsonResponse
 # Simulate order tracking
 def track_order(request):
     tracking_info = None
@@ -107,6 +110,52 @@ def reviews(request):
     
     # Render the reviews template and pass the reviews data
     return render(request, 'shop/reviews.html', {'reviews': reviews})
+
+
+
+def register_view(request):
+    """Handles user registration"""
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Registration successful. Please log in.")
+
+            # Return JSON response for test cases
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"success": True, "message": "User registered successfully"}, status=201)
+
+            return redirect('login')  # Redirect to login after successful registration
+
+        else:
+            messages.error(request, "Registration failed. Please check the form.")
+
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"success": False, "errors": form.errors}, status=400)
+
+    else:
+        form = UserCreationForm()
+    
+    return render(request, 'shop/register.html', {'form': form})
+
+
+def login_view(request):
+    """Handles user login"""
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home')  # Redirect to homepage after login
+    else:
+        form = AuthenticationForm()
+    return render(request, 'shop/login.html', {'form': form})
+
+def logout_view(request):
+    """Handles user logout"""
+    logout(request)
+    return redirect('login')
+
 
 
 

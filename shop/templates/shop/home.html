@@ -363,6 +363,191 @@
         .footer-bottom a {
             color: #007bff;
         }
+
+        /* New styles for the cartoon showcase section */
+        .cartoon-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .cartoon-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            height: 280px;
+        }
+        
+        .cartoon-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cartoon-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cartoon-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cartoon-item:hover .cartoon-overlay {
+            opacity: 1;
+        }
+
+        /* Bracelet showcase styles */
+        .bracelet-showcase {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 10px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #007bff #eee;
+        }
+        
+        .bracelet-showcase::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .bracelet-showcase::-webkit-scrollbar-track {
+            background: #eee;
+            border-radius: 10px;
+        }
+        
+        .bracelet-showcase::-webkit-scrollbar-thumb {
+            background-color: #007bff;
+            border-radius: 10px;
+        }
+        
+        .bracelet-item {
+            min-width: 280px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .bracelet-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .bracelet-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .bracelet-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .bracelet-info h4 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .bracelet-info p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Logo showcase section */
+        .logo-banner {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, #0b3d91, #0477bf);
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('{% static "logo/logo.jpg" %}') center/contain no-repeat;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .logo-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            z-index: 2;
+        }
+        
+        .logo-image {
+            width: 180px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-text {
+            max-width: 60%;
+            color: white;
+            text-align: center;
+        }
+        
+        .logo-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-text p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-content {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .logo-image {
+                margin-bottom: 15px;
+                width: 120px;
+            }
+            
+            .logo-text {
+                max-width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -418,10 +603,60 @@
         </div>
     </header>
 
+    <!-- Logo Banner Section (New) -->
+    <div class="section-container">
+        <div class="logo-banner">
+            <div class="logo-content">
+                <img src="{% static 'logo/logo.jpg' %}" alt="Ak Mobilecase Logo" class="logo-image">
+                <div class="logo-text">
+                    <!-- <h3>Ak Mobilecase</h3>
+                    <p>Premium Phone Cases for Every Style</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="img-container">
         <img class="background-img" src="{% static 'images/home1.webp' %}" alt="Background">
         <img class="centered-img" src="{% static 'images/home1.webp' %}" alt="Phone Case">
-    </div>    
+    </div>
+
+    <!-- Cartoon Section (New) -->
+    <div class="section-container">
+        <h2 class="section-heading">Cartoon Collection</h2>
+        <div class="cartoon-showcase">
+            <a href="/collection/cartoon/" class="cartoon-item">
+                <img src="{% static 'cartoon/cartoon1.jpeg' %}" alt="Cartoon Case 1">
+                <div class="cartoon-overlay">
+                    <h4>Tom & Jerry Series</h4>
+                </div>
+            </a>
+            <a href="/collection/cartoon/" class="cartoon-item">
+                <img src="{% static 'cartoon/cartoon2.jpeg' %}" alt="Cartoon Case 2">
+                <div class="cartoon-overlay">
+                    <h4>Disney Collection</h4>
+                </div>
+            </a>
+            <a href="/collection/cartoon/" class="cartoon-item">
+                <img src="{% static 'cartoon/cartoon3.jpeg' %}" alt="Cartoon Case 3">
+                <div class="cartoon-overlay">
+                    <h4>Looney Tunes</h4>
+                </div>
+            </a>
+            <a href="/collection/cartoon/" class="cartoon-item">
+                <img src="{% static 'cartoon/cartoon4.jpeg' %}" alt="Cartoon Case 4">
+                <div class="cartoon-overlay">
+                    <h4>Pokémon Edition</h4>
+                </div>
+            </a>
+            <a href="/collection/cartoon/" class="cartoon-item">
+                <img src="{% static 'cartoon/cartoon5.jpeg' %}" alt="Cartoon Case 5">
+                <div class="cartoon-overlay">
+                    <h4>Cartoon Network</h4>
+                </div>
+            </a>
+        </div>
+    </div>
 
     <!-- New PNG Gallery Section with clickable items -->
     <div class="section-container">
@@ -443,6 +678,34 @@
                 <img src="{% static 'images/1000299875.png' %}" alt="Exotic Design">
                 <div class="png-title">Exotic Cases</div>
             </a>
+        </div>
+    </div>
+
+    <!-- Bracelet Cases Section (New) -->
+    <div class="section-container">
+        <h2 class="section-heading">Bracelet Phone Cases</h2>
+        <div class="bracelet-showcase">
+            <div class="bracelet-item">
+                <img src="{% static 'braceletcase/brace1.png' %}" alt="Bracelet Case 1">
+                <div class="bracelet-info">
+                    <h4>Classic Chain</h4>
+                    <p>Elegant chain bracelet attachment</p>
+                </div>
+            </div>
+            <div class="bracelet-item">
+                <img src="{% static 'braceletcase/brace2.png' %}" alt="Bracelet Case 2">
+                <div class="bracelet-info">
+                    <h4>Leather Strap</h4>
+                    <p>Premium leather wristband</p>
+                </div>
+            </div>
+            <div class="bracelet-item">
+                <img src="{% static 'braceletcase/brace3.png' %}" alt="Bracelet Case 3">
+                <div class="bracelet-info">
+                    <h4>Pearl Design</h4>
+                    <p>Luxury pearl bracelet accessory</p>
+                </div>
+            </div>
         </div>
     </div>
 

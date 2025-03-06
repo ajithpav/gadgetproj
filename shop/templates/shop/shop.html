@@ -4,44 +4,567 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - GadgetStore</title>
+    <title>Shop - Ak Mobilecase</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
     <style>
+        body {
+            background-color: #f8f9fa;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
+        }
+        
         .navbar {
             border-bottom: 2px solid #ccc;
         }
-        .card {
-            border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+        
+        .section-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 1300px;
         }
-        .card:hover {
-            transform: translateY(-10px);
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 12px;
+            margin-bottom: 20px;
         }
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
         }
+        
         footer {
             background-color: #222;
             color: white;
+            margin-top: 50px;
+            padding: 30px 0;
+        }
+
+        .img-container {
+            position: relative;
+            max-width: 1200px; /* Set container width */
+            height: 600px; /* Reduced height */
+            border: 10px solid white;
+            border-radius: 15px;
+            overflow: hidden;
+            display: block;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 10px;
+            background-color: #fff;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        /* Background Image */
+        .background-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Centered Tom & Jerry Image */
+        .centered-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;  /* Adjust as per need */
+            height: auto;
+            z-index: 2;
+        }
+
+        /* GIF Container */
+        .gif-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gif-gallery img {
+            width: 250px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gif-gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .collection-gif-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .collection-gif-gallery img {
+            width: 350px; /* Adjust width */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .collection-gif-gallery img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Video gallery styling - updated for better arrangement */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+        
+        .video-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-item video {
+            width: 100%;
+            display: block;
+            border-radius: 15px;
+        }
+        
+        .video-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        
+        /* New PNG gallery styling */
+        .png-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px auto;
+        }
+        
+        .png-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .png-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .png-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .png-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+            font-size: 2rem;
+        }
+        
+        .section-heading::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #007bff, #00e6ff);
+            margin: 15px auto;
+            border-radius: 3px;
+        }
+        
+        /* Collection items styling */
+        .product-item {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .product-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* Footer styling improvements */
+        .footer {
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
+        .footer-nav a {
+            color: #ccc;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-info li {
+            margin-bottom: 10px;
+        }
+        
+        .contact-info a {
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .newsletter h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .email-form {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .email-input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            width: 200px;
+        }
+        
+        .submit-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 30px;
+        }
+        
+        .footer-bottom a {
+            color: #007bff;
+        }
+
+        /* New styles for the cartoon showcase section */
+        .cartoon-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .cartoon-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            height: 280px;
+        }
+        
+        .cartoon-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cartoon-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cartoon-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cartoon-item:hover .cartoon-overlay {
+            opacity: 1;
+        }
+
+        /* Bracelet showcase styles */
+        .bracelet-showcase {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 10px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #007bff #eee;
+        }
+        
+        .bracelet-showcase::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .bracelet-showcase::-webkit-scrollbar-track {
+            background: #eee;
+            border-radius: 10px;
+        }
+        
+        .bracelet-showcase::-webkit-scrollbar-thumb {
+            background-color: #007bff;
+            border-radius: 10px;
+        }
+        
+        .bracelet-item {
+            min-width: 280px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .bracelet-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .bracelet-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .bracelet-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .bracelet-info h4 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .bracelet-info p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Logo showcase section */
+        .logo-banner {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, #0b3d91, #0477bf);
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('{% static "logo/logo.jpg" %}') center/contain no-repeat;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .logo-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            z-index: 2;
+        }
+        
+        .logo-image {
+            width: 180px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-text {
+            max-width: 60%;
+            color: white;
+            text-align: center;
+        }
+        
+        .logo-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-text p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-content {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .logo-image {
+                margin-bottom: 15px;
+                width: 120px;
+            }
+            
+            .logo-text {
+                max-width: 90%;
+            }
         }
     </style>
+
+
+
 </head>
 <body>
-
+    <!-- Navigation Bar -->
     <header class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">GadgetStore</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/shop/">Shop</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/shop/">Shop</a></li>
             
                 <!-- Dropdown for Collection -->
                 <li class="nav-item dropdown">
@@ -64,55 +587,436 @@
                         <a class="dropdown-item" href="/collection/organic/">BTS Cases</a>
                         <a class="dropdown-item" href="/collection/organic/">Floral Cases</a>
                         <a class="dropdown-item" href="/collection/organic/">Aesthetic Girl Cases</a>
-                        
                     </div>
                 </li>
                 
-            
                 <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="/reviews/">Customer Reviews</a></li>
                 <li class="nav-item"><a class="nav-link" href="/track-order/">Track Your Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
             </ul>
+            
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a href="#" class="btn btn-outline-light ml-3" id="cart-btn">
+                <i class="fas fa-shopping-cart"></i> Cart
+                <span class="cart-count">0</span>
+            </a>
         </div>
     </header>
 
-    <div class="container my-5">
-        <h2>All Products</h2>
-        <div class="row">
-            {% for product in products %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="{{ product.image.url|default:'https://source.unsplash.com/400x300/?electronics,gadgets' }}" class="card-img-top" alt="Product image">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.description|slice:":100" }}...</p>
-                            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
-                        </div>
-                    </div>
+    <!-- Logo Banner Section -->
+    <div class="section-container">
+        <div class="logo-banner">
+            <div class="logo-content">
+                <img src="{% static 'logo/logo.jpg' %}" alt="Ak Mobilecase Logo" class="logo-image">
+                <div class="logo-text">
+                    <!-- <h3>Ak Mobilecase</h3>
+                    <p>Premium Phone Cases for Every Style</p> -->
                 </div>
-            {% empty %}
-                <!-- Display Dummy Products When No Data is Available -->
-                {% for i in "123456" %}
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <img src="https://source.unsplash.com/400x300/?electronics,gadgets" class="card-img-top" alt="Dummy Product">
-                            <div class="card-body">
-                                <h5 class="card-title">Sample Gadget {{ forloop.counter }}</h5>
-                                <p class="card-text">This is a dummy product description. High-quality, innovative, and affordable.</p>
-                                <a href="#" class="btn btn-primary">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            {% endfor %}
+            </div>
         </div>
     </div>
+
+    <!-- Shop Header -->
+    <div class="section-container">
+        <div class="shop-header">
+            <h1>Our Products</h1>
+            <div class="shop-filters">
+                <div class="filter-group">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by" class="form-control">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="phone-model">Phone Model:</label>
+                    <select id="phone-model" class="form-control">
+                        <option value="all">All Models</option>
+                        <option value="iphone">iPhone</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="oneplus">OnePlus</option>
+                        <option value="xiaomi">Xiaomi</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="categories">Categories:</label>
+                    <select id="categories" class="form-control">
+                        <option value="all">All Categories</option>
+                        <option value="anime">Anime</option>
+                        <option value="marvel">Marvel</option>
+                        <option value="wallet">Wallet Cases</option>
+                        <option value="couple">Couple Cases</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="section-container">
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-badge new">New</div>
+                <div class="favorite-btn" data-product-id="1">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-image">
+                    <img src="{% static 'images/1000299865.png' %}" alt="Anime Phone Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Anime Character Case</h3>
+                    <div class="product-meta">
+                        <div class="product-category">Anime Collection</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(24)</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹799</span>
+                        <span class="discount">-38%</span>
+                    </div>
+                    <div class="product-variants">
+                        <div class="variant-label">Model:</div>
+                        <div class="variant-options">
+                            <span class="variant-option">iPhone</span>
+                            <span class="variant-option">Samsung</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-badge bestseller">Bestseller</div>
+                <div class="favorite-btn" data-product-id="2">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-image">
+                    <img src="{% static 'images/1000299866.png' %}" alt="Marvel Phone Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Marvel Superhero Case</h3>
+                    <div class="product-meta">
+                        <div class="product-category">Marvel Collection</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(42)</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹599</span>
+                        <span class="original-price">₹899</span>
+                        <span class="discount">-33%</span>
+                    </div>
+                    <div class="product-variants">
+                        <div class="variant-label">Model:</div>
+                        <div class="variant-options">
+                            <span class="variant-option">iPhone</span>
+                            <span class="variant-option">Samsung</span>
+                            <span class="variant-option">OnePlus</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="2">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="favorite-btn" data-product-id="3">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-image">
+                    <img src="{% static 'couple_img/couple1.jpg' %}" alt="Couple Phone Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Couples Matching Case Set</h3>
+                    <div class="product-meta">
+                        <div class="product-category">Couple Collection</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(18)</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹1299</span>
+                        <span class="discount">-31%</span>
+                    </div>
+                    <div class="product-variants">
+                        <div class="variant-label">Model:</div>
+                        <div class="variant-options">
+                            <span class="variant-option">iPhone</span>
+                            <span class="variant-option">Samsung</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="3">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="favorite-btn" data-product-id="4">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-image">
+                    <img src="{% static 'braceletcase/brace1.png' %}" alt="Bracelet Phone Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Classic Chain Bracelet Case</h3>
+                    <div class="product-meta">
+                        <div class="product-category">Bracelet Collection</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <span>(15)</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹699</span>
+                        <span class="original-price">₹999</span>
+                        <span class="discount">-30%</span>
+                    </div>
+                    <div class="product-variants">
+                        <div class="variant-label">Model:</div>
+                        <div class="variant-options">
+                            <span class="variant-option">iPhone</span>
+                            <span class="variant-option">Samsung</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="4">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-badge sale">Sale</div>
+                <div class="favorite-btn" data-product-id="5">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-image">
+                    <img src="{% static 'cartoon/cartoon1.jpeg' %}" alt="Tom & Jerry Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Tom & Jerry Fun Case</h3>
+                    <div class="product-meta">
+                        <div class="product-category">Cartoon Collection</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(22)</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹449</span>
+                        <span class="original-price">₹799</span>
+                        <span class="discount">-44%</span>
+                    </div>
+                    <div class="product-variants">
+                        <div class="variant-label">Model:</div>
+                        <div class="variant-options">
+                            <span class="variant-option">iPhone</span>
+                            <span class="variant-option">Samsung</span>
+                            <span class="variant-option">OnePlus</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="5">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="favorite-btn" data-product-id="6">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-image">
+                    <img src="{% static 'cartoon/cartoon2.jpeg' %}" alt="Disney Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Disney Princess Case</h3>
+                    <div class="product-meta">
+                        <div class="product-category">Cartoon Collection</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(31)</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹549</span>
+                        <span class="original-price">₹849</span>
+                        <span class="discount">-35%</span>
+                    </div>
+                    <div class="product-variants">
+                        <div class="variant-label">Model:</div>
+                        <div class="variant-options">
+                            <span class="variant-option">iPhone</span>
+                            <span class="variant-option">Samsung</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="6">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="favorite-btn" data-product-id="7">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-image">
+                    <img src="{% static 'anime_img/anime1.jpg' %}" alt="Anime Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Anime Collage Case</h3>
+                    <div class="product-meta">
+                        <div class="product-category">Anime Collection</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(17)</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹799</span>
+                        <span class="discount">-38%</span>
+                    </div>
+                    <div class="product-variants">
+                        <div class="variant-label">Model:</div>
+                        <div class="variant-options">
+                            <span class="variant-option">iPhone</span>
+                            <span class="variant-option">Samsung</span>
+                            <span class="variant-option">OnePlus</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="7">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-badge limited">Limited</div>
+                <div class="favorite-btn" data-product-id="8">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-image">
+                    <img src="{% static 'images/1000299868 (1).png' %}" alt="Couple Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Elegant Couple Case Set</h3>
+                    <div class="product-meta">
+                        <div class="product-category">Couple Collection</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(37)</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹999</span>
+                        <span class="original-price">₹1499</span>
+                        <span class="discount">-33%</span>
+                    </div>
+                    <div class="product-variants">
+                        <div class="variant-label">Model:</div>
+                        <div class="variant-options">
+                            <span class="variant-option">iPhone</span>
+                            <span class="variant-option">Samsung</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="8">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+            <div class="empty-cart-message">Your cart is empty</div>
+        </div>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span class="subtotal-amount">₹0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping:</span>
+                <span>Calculated at checkout</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span class="total-amount">₹0.00</span>
+            </div>
+        </div>
+        <div class="cart-actions">
+            <button class="checkout-btn">Checkout</button>
+            <button class="continue-shopping">Continue Shopping</button>
+        </div>
+    </div>
+    <div class="cart-overlay"></div>
 
     <!-- Footer start -->
     <footer class="footer">
@@ -156,8 +1060,10 @@
         </div>
     </footer>
 
+    <!-- Bootstrap & jQuery JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/shop.js' %}"></script>
 </body>
 </html>

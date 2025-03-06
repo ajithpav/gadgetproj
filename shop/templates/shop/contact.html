@@ -21,54 +21,102 @@
 </head>
 <body>
 
-    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Navigation Bar with hover dropdown -->
+<header class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="d-flex align-items-center">
+        <a class="navbar-brand mr-3" href="/">
+            <img src="{% static 'logo/logo.jpg' %}" alt="Ak Mobilecase Logo" height="60" class="mr-2">
+        </a>
         <a class="navbar-brand" href="/">GadgetStore</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/shop/">Shop</a></li>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/">Shop</a></li>
+        
+            <!-- Dropdown for Collection with hover effect -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="collectionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Collection
+                </a>
+                <div class="dropdown-menu" aria-labelledby="collectionDropdown">
+                    <a class="dropdown-item" href="/collection/anime-case/">Anime Cases</a>
+                    <a class="dropdown-item" href="/collection/marvel-case/">Marvel Cases</a>
+                    <a class="dropdown-item" href="/collection/exotic/">Wallet Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Butterfly Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Panda wallet Cases</a>
+                    <a class="dropdown-item" href="/collection/couple-case/">Couples Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Bracelet Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Toy Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Keychain Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Pop Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Trippy Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Y2K Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">BTS Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Floral Cases</a>
+                    <a class="dropdown-item" href="/collection/organic/">Aesthetic Girl Cases</a>
+                </div>
+            </li>
             
-                <!-- Dropdown for Collection -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="collectionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Collection
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="collectionDropdown">
-                        <a class="dropdown-item" href="/collection/anime-case/">Anime Cases</a>
-                        <a class="dropdown-item" href="/collection/marvel-case/">Marvel Cases</a>
-                        <a class="dropdown-item" href="/collection/exotic/">Wallet Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Butterfly Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Panda wallet Cases</a>
-                        <a class="dropdown-item" href="/collection/couple-case/">Couples Cases</a> 
-                        <a class="dropdown-item" href="/collection/organic/">Bracelet Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Toy Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Keychain Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Pop Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Trippy Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Y2K Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">BTS Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Floral Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/">Aesthetic Girl Cases</a>
-                        
-                    </div>
-                </li>
-                
-            
-                <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="/reviews/">Customer Reviews</a></li>
-                <li class="nav-item"><a class="nav-link" href="/track-order/">Track Your Order</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
-            <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
-        </div>
-    </header>
+            <!-- Other navigation items remain unchanged -->
+            <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="/reviews/">Customer Reviews</a></li>
+            <li class="nav-item"><a class="nav-link" href="/track-order/">Track Your Order</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+        </ul>
+        
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
+    </div>
+</header>
+
+<!-- Add this custom CSS -->
+<style>
+    /* Hover dropdown functionality */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    
+    /* Make dropdown taller for many items */
+    .dropdown-menu {
+        max-height: 400px;
+        overflow-y: auto;
+        margin-top: 0; /* Remove the gap so it doesn't disappear when hovered */
+    }
+    
+    /* Optional: make the items in two columns for better space usage */
+    @media (min-width: 768px) {
+        .dropdown-menu {
+            width: 400px;
+            column-count: 2;
+        }
+    }
+</style>
+
+<!-- Add this JavaScript at the end of your body tag -->
+<script>
+    // Fix for hover and click events conflict
+    $(document).ready(function(){
+        $('.dropdown').on('mouseenter mouseleave', function() {
+            $(this).toggleClass('show');
+            $(this).find('.dropdown-menu').toggleClass('show');
+        });
+        
+        // Prevent clicks from closing dropdown on large screens
+        $('.dropdown-toggle').on('click', function(e) {
+            if (window.innerWidth >= 992) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    });
+</script>
 
     <div class="container my-5">
         <h2>Contact Us</h2>

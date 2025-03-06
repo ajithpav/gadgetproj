@@ -17,5 +17,6 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('collection/marvel-case/', views.marvel_case, name='marvel-case'),
+    path('collection/cartoon/',views.cartoon,name='cartoon'),
 
 ]

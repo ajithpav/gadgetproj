@@ -2,85 +2,13 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - GadgetStore</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        .navbar {
-            border-bottom: 2px solid #ccc;
-        }
-        .card {
-            border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-        }
-        .card-img-top {
-            height: 300px;
-            width: 50vh;
-            object-fit: cover;
-        }
-        footer {
-            background-color: #222;
-            color: white;
-        }
-        .collection-gif-gallery {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .product-item {
-            text-align: center;
-        }
-        .product-title {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .product-name {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .product-price {
-            color: #28a745;
-            font-size: 14px;
-        }
-        .filter-section {
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-        .filter-dropdowns {
-            display: flex;
-            justify-content: space-between;
-        }
-        .filter-dropdowns select {
-            width: 48%;
-        }
-
-        .product-price {
-        font-size: 18px;
-        font-weight: bold;
-        color: #333;
-        }
-
-    .original-price {
-        text-decoration: line-through;
-        color: #888;  /* Grey color for the original price */
-        margin-right: 10px;  /* Space between original and discounted price */
-    }
-
-    .discount-price {
-        color: #28a745; /* Green color for the discounted price */
-    }
-
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cartoon Cases - Ak Mobilecase</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
 <body>
 
     <!-- Navigation Bar with hover dropdown -->
@@ -109,17 +37,12 @@
                     <a class="dropdown-item" href="/collection/marvel-case/">Marvel Cases</a>
                     <a class="dropdown-item" href="/collection/exotic/">Wallet Cases</a>
                     <a class="dropdown-item" href="/collection/organic/">Butterfly Cases</a>
-                    <a class="dropdown-item" href="/collection/organic/">Panda wallet Cases</a>
+                    <a class="dropdown-item" href="/collection/cartoon/">Cartoon Cases</a>
                     <a class="dropdown-item" href="/collection/couple-case/">Couples Cases</a>
                     <a class="dropdown-item" href="/collection/organic/">Bracelet Cases</a>
                     <a class="dropdown-item" href="/collection/organic/">Toy Cases</a>
                     <a class="dropdown-item" href="/collection/organic/">Keychain Cases</a>
-                    <a class="dropdown-item" href="/collection/organic/">Pop Cases</a>
-                    <a class="dropdown-item" href="/collection/organic/">Trippy Cases</a>
-                    <a class="dropdown-item" href="/collection/organic/">Y2K Cases</a>
-                    <a class="dropdown-item" href="/collection/organic/">BTS Cases</a>
-                    <a class="dropdown-item" href="/collection/organic/">Floral Cases</a>
-                    <a class="dropdown-item" href="/collection/organic/">Aesthetic Girl Cases</a>
+                    <a class="dropdown-item" href="/collection/cartoon/">Cartoon Cases</a>
                 </div>
             </li>
             
@@ -158,6 +81,56 @@
             width: 400px;
             column-count: 2;
         }
+    }
+
+    /* Styling for cartoon collection */
+    .collection-gif-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+    
+    .product-item {
+        border: 1px solid #eee;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .product-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .product-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+    }
+    
+    .product-name {
+        padding: 10px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .product-price {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+    
+    .original-price {
+        text-decoration: line-through;
+        color: #999;
+    }
+    
+    .discount-price {
+        color: #e91e63;
+        font-weight: bold;
     }
 </style>
 
@@ -208,37 +181,83 @@
 
     <!-- Products Section -->
     <div class="container">
-        <h2 class="text-center my-5">Couple Cases</h2>
+        <h2 class="text-center my-5">Cartoon Cases</h2>
         <div class="collection-gif-gallery">
             <div class="product-item">
-                <img src="{% static 'couple_img/couple1.jpg' %}" alt="Clear Case" class="card-img-top">
-                <div class="product-name">Couple Clear Case</div>
+                <img src="{% static 'cartoon/cartoon1.jpeg' %}" alt="Tom & Jerry Series" class="card-img-top">
+                <div class="product-name">Tom & Jerry Series</div>
                 <div class="product-price">
-                    <span class="original-price">₹1000</span> 
-                    <span class="discount-price">₹350</span>
+                    <span class="original-price">₹999</span> 
+                    <span class="discount-price">₹349</span>
                 </div>
             </div>
             <div class="product-item">
-                <img src="{% static 'couple_img/couple2.webp' %}" alt="Couple Cases" class="card-img-top">
-                <div class="product-name">Couple Love Case</div>
+                <img src="{% static 'cartoon/cartoon2.jpeg' %}" alt="Disney Collection" class="card-img-top">
+                <div class="product-name">Disney Collection</div>
                 <div class="product-price">
-                    <span class="original-price">₹1200</span> 
+                    <span class="original-price">₹1099</span> 
                     <span class="discount-price">₹399</span>
                 </div>
             </div>
             <div class="product-item">
-                <img src="{% static 'couple_img/couple3.jpg' %}" alt="Designer Phone Case" class="card-img-top">
-                <div class="product-name">Designer Couple Case</div>
+                <img src="{% static 'cartoon/cartoon3.jpeg' %}" alt="Looney Tunes" class="card-img-top">
+                <div class="product-name">Looney Tunes</div>
                 <div class="product-price">
-                    <span class="original-price">₹1400</span> 
-                    <span class="discount-price">₹420</span>
+                    <span class="original-price">₹1199</span> 
+                    <span class="discount-price">₹399</span>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="{% static 'cartoon/cartoon4.jpeg' %}" alt="Pokémon Edition" class="card-img-top">
+                <div class="product-name">Pokémon Edition</div>
+                <div class="product-price">
+                    <span class="original-price">₹1299</span> 
+                    <span class="discount-price">₹449</span>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="{% static 'cartoon/cartoon5.jpeg' %}" alt="Cartoon Network" class="card-img-top">
+                <div class="product-name">Cartoon Network</div>
+                <div class="product-price">
+                    <span class="original-price">₹1199</span> 
+                    <span class="discount-price">₹399</span>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="{% static 'cartoon/cartoon6.jpeg' %}" alt="SpongeBob Series" class="card-img-top">
+                <div class="product-name">SpongeBob Series</div>
+                <div class="product-price">
+                    <span class="original-price">₹1099</span> 
+                    <span class="discount-price">₹379</span>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="{% static 'cartoon/cartoon7.jpeg' %}" alt="Powerpuff Girls" class="card-img-top">
+                <div class="product-name">Powerpuff Girls</div>
+                <div class="product-price">
+                    <span class="original-price">₹1149</span> 
+                    <span class="discount-price">₹399</span>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="{% static 'cartoon/cartoon8.jpeg' %}" alt="Adventure Time" class="card-img-top">
+                <div class="product-name">Adventure Time</div>
+                <div class="product-price">
+                    <span class="original-price">₹1199</span> 
+                    <span class="discount-price">₹429</span>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="{% static 'cartoon/cartoon9.jpeg' %}" alt="Rick and Morty" class="card-img-top">
+                <div class="product-name">Rick and Morty</div>
+                <div class="product-price">
+                    <span class="original-price">₹1299</span> 
+                    <span class="discount-price">₹449</span>
                 </div>
             </div>
         </div>
     </div>
     
-    
-
     <!-- Footer start -->
     <footer class="footer">
         <div class="footer-content">
@@ -256,7 +275,7 @@
             <div class="contact-info">
                 <ul>
                     <li><a href="tel:+916382164868">+91 6382164868</a></li>
-                    <li><a href="mailto:gadgetsdestiny@gmail.com">akmobiles6420@gmail.com</a></li>
+                    <li><a href="mailto:akmobiles6420@gmail.com">akmobiles6420@gmail.com</a></li>
                     <li> Address: no :38 , 2nd floor, pvt complex, ranganathan st, t.nager Chennai -17,India</li>
                 </ul>
             </div>

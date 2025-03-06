@@ -7,147 +7,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track Your Order - GadgetStore</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
-        body {
-            min-height: 100vh;
-            position: relative;
-            padding-bottom: 300px;  /* Height of the footer */
-            background-color: #f8f9fa;
-        }
-        
         .navbar {
-            border-bottom: 2px solid #007bff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #ccc;
         }
-        
-        .track-form-container {
-            margin-top: 50px;
-            margin-bottom: 50px;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-        
-        .track-form-container h2 {
-            color: #007bff;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            padding: 10px 25px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .tracking-result {
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #f8f9fa;
-            border-left: 5px solid #007bff;
-        }
-        
-        .tracking-result h4 {
-            color: #007bff;
-            margin-bottom: 15px;
-        }
-        
         footer {
             background-color: #222;
             color: white;
-            padding: 30px 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
         }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-bottom: 20px;
-        }
-        
-        .contact-info ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .contact-info ul li {
-            margin-bottom: 10px;
-        }
-        
-        .contact-info a {
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        .contact-info a:hover {
-            color: #007bff;
-        }
-        
-        .newsletter h3 {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-        
-        .email-form {
-            display: flex;
-            margin-bottom: 15px;
-        }
-        
-        .email-input {
-            padding: 8px 10px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            width: 200px;
-        }
-        
-        .submit-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            padding: 8px 15px;
-            cursor: pointer;
-        }
-        
-        .social-links {
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            color: white;
-            margin-right: 15px;
-            text-decoration: none;
-        }
-        
-        .social-links a:hover {
-            color: #007bff;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-        }
-        
-        .footer-bottom a {
-            color: #007bff;
-        }
-        
+    </style>
+</head>
+<body>
+
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand mr-3" href="/">
+                <img src="{% static 'logo/logo.jpg' %}" alt="Ak Mobilecase Logo" height="60" class="mr-2">
+            </a>
+            <a class="navbar-brand" href="/">Mobilecase</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/shop/">Shop</a></li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="collectionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Collection
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="collectionDropdown">
+                        <a class="dropdown-item" href="/collection/anime-case/">Anime Cases</a>
+                        <a class="dropdown-item" href="/collection/marvel-case/">Marvel Cases</a>
+                        <a class="dropdown-item" href="/collection/exotic/">Wallet Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Butterfly Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Panda wallet Cases</a>
+                        <a class="dropdown-item" href="/collection/couple-case/">Couples Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Bracelet Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Toy Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Keychain Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Pop Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Trippy Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Y2K Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">BTS Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Floral Cases</a>
+                        <a class="dropdown-item" href="/collection/organic/">Aesthetic Girl Cases</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/reviews/">Customer Reviews</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/track-order/">Track Your Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+            </ul>
+            
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+    </header>
+
+    <style>
         /* Hover dropdown functionality */
         .dropdown:hover .dropdown-menu {
             display: block;
@@ -157,8 +83,7 @@
         .dropdown-menu {
             max-height: 400px;
             overflow-y: auto;
-            margin-top: 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 0; /* Remove the gap so it doesn't disappear when hovered */
         }
         
         /* Optional: make the items in two columns for better space usage */
@@ -168,167 +93,101 @@
                 column-count: 2;
             }
         }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 450px;
-            }
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .contact-info, .newsletter {
-                margin-bottom: 30px;
-            }
-            .email-form {
-                justify-content: center;
-            }
-        }
     </style>
-</head>
-<body>
 
-    <!-- Navigation Bar with hover dropdown -->
-    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="d-flex align-items-center">
-            <a class="navbar-brand mr-3" href="/">
-                <img src="{% static 'logo/logo.jpg' %}" alt="GadgetStore Logo" height="60" class="mr-2">
-            </a>
-            <a class="navbar-brand" href="/">GadgetStore</a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/shop/"><i class="fas fa-store"></i> Shop</a></li>
-            
-                <!-- Dropdown for Collection with hover effect -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="collectionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-th-large"></i> Collection
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="collectionDropdown">
-                        <a class="dropdown-item" href="/collection/anime-case/"><i class="fas fa-tv"></i> Anime Cases</a>
-                        <a class="dropdown-item" href="/collection/marvel-case/"><i class="fas fa-mask"></i> Marvel Cases</a>
-                        <a class="dropdown-item" href="/collection/exotic/"><i class="fas fa-wallet"></i> Wallet Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/"><i class="fas fa-bug"></i> Butterfly Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/"><i class="fas fa-child"></i> Cartoon Cases</a>
-                        <a class="dropdown-item" href="/collection/couple-case/"><i class="fas fa-heart"></i> Couples Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/"><i class="fas fa-link"></i> Bracelet Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/"><i class="fas fa-puzzle-piece"></i> Toy Cases</a>
-                        <a class="dropdown-item" href="/collection/organic/"><i class="fas fa-key"></i> Keychain Cases</a>
-                    </div>
-                </li>
-                
-                <li class="nav-item"><a class="nav-link" href="/about/"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="/reviews/"><i class="fas fa-star"></i> Customer Reviews</a></li>
-                <li class="nav-item active"><a class="nav-link" href="/track-order/"><i class="fas fa-truck"></i> Track Your Order</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact/"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-            
-            <form class="form-inline my-2 my-lg-0">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search products..." aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-            <a href="#" class="btn btn-outline-light ml-3"><i class="fas fa-shopping-cart"></i> Cart</a>
-        </div>
-    </header>
-
-    <!-- Track Your Order Form -->
-    <div class="container track-form-container">
-        <h2><i class="fas fa-shipping-fast"></i> Track Your Order</h2>
-        <form method="POST">
+    <div class="container my-5">
+        <h2>Track Your Order</h2>
+        <p>Enter your order details below to track its status:</p>
+        <form method="POST" action="{% url 'track_order' %}">  {# Assuming you have a 'track_order' URL #}
             {% csrf_token %}
             <div class="form-group">
-                <label for="awb_number"><i class="fas fa-barcode"></i> AWB Number</label>
-                <input type="text" class="form-control" id="awb_number" name="awb_number" placeholder="Enter AWB Number" required>
-                <small class="form-text text-muted">The AWB number is found in your shipping confirmation email.</small>
+                <label for="order_id">Order ID</label>
+                <input type="text" class="form-control" id="order_id" name="order_id" placeholder="Enter your Order ID" required>
             </div>
             <div class="form-group">
-                <label for="order_id"><i class="fas fa-hashtag"></i> Order ID</label>
-                <input type="text" class="form-control" id="order_id" name="order_id" placeholder="Enter Order ID" required>
-                <small class="form-text text-muted">Your Order ID was sent to you in your order confirmation email.</small>
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter the email used for the order" required>
             </div>
-            <div class="form-group">
-                <label for="mobile_number"><i class="fas fa-mobile-alt"></i> Mobile Number</label>
-                <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" required>
-                <small class="form-text text-muted">The mobile number you provided during checkout.</small>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Track Order</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Track Order</button>
         </form>
-
-        {% if tracking_info %}
-            <div class="tracking-result mt-4">
-                <h4><i class="fas fa-info-circle"></i> Tracking Information</h4>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p><strong>AWB Number:</strong> {{ tracking_info.awb_number }}</p>
-                        <p><strong>Order ID:</strong> {{ tracking_info.order_id }}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p><strong>Status:</strong> <span class="badge badge-primary">{{ tracking_info.status }}</span></p>
-                        <p><strong>Estimated Delivery:</strong> {{ tracking_info.estimated_delivery_date }}</p>
-                    </div>
-                </div>
-            </div>
-        {% elif error_message %}
-            <div class="mt-4 alert alert-danger">
-                <i class="fas fa-exclamation-triangle"></i> {{ error_message }}
-            </div>
-        {% endif %}
+        
+        {% if order_details %}
+            <h3>Order Details</h3>
+            <p><strong>Order ID:</strong> {{ order_details.order_id }}</p>
+            <p><strong>Status:</strong> {{ order_details.status }}</p>
+            <p><strong>Shipping Address:</strong> {{ order_details.shipping_address }}</p>
+            {% endif %}
     </div>
 
-    <!-- Footer start -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <!-- Contact Info -->
-                <div class="contact-info">
-                    <h3><i class="fas fa-address-book"></i> Contact Us</h3>
+                <div class="footer-company">
+                    <h3>AK Mobile Case</h3>
+                    <p class="company-desc">Premium mobile accessories for all your needs</p>
+                    <address class="address">
+                        <p>No: 38, 2nd Floor, PVT Complex</p>
+                        <p>Ranganathan St, T. Nagar</p>
+                        <p>Chennai - 600017, India</p>
+                    </address>
+                </div>
+
+                <div class="footer-nav">
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><i class="fas fa-phone"></i> <a href="tel:+916382164868">+91 6382164868</a></li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:akmobiles6420@gmail.com">akmobiles6420@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> Address: No. 38, 2nd Floor, PVT Complex, Ranganathan St, T. Nagar, Chennai - 600017, India</li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/refund-policy">Refund Policy</a></li>
+                        <li><a href="/terms-of-service">Terms of Service</a></li>
+                        <li><a href="/shipping-policy">Shipping Policy</a></li>
                     </ul>
                 </div>
-        
-                <!-- Quick Links -->
-                <div class="quick-links">
-                    <h3><i class="fas fa-link"></i> Quick Links</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/shop/">Shop</a></li>
-                        <li><a href="/track-order/">Track Order</a></li>
-                        <li><a href="/contact/">Contact</a></li>
+
+                <div class="footer-contact">
+                    <h3>Get In Touch</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="icon phone-icon"></i>
+                            <a href="tel:+916382164868">+91 6382 164 868</a>
+                        </li>
+                        <li>
+                            <i class="icon email-icon"></i>
+                            <a href="mailto:akmobiles6420@gmail.com">akmobiles6420@gmail.com</a>
+                        </li>
                     </ul>
-                </div>
-        
-                <!-- Newsletter & Social -->
-                <div class="newsletter">
-                    <h3><i class="fas fa-envelope-open-text"></i> Subscribe to our emails</h3>
-                    <div class="email-form">
-                        <input type="email" placeholder="Your email address" class="email-input">
-                        <button type="submit" class="submit-btn">→</button>
-                    </div>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="#" class="social-icon facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
+                </div>
+
+                <div class="newsletter">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Stay updated with our latest offers and products</p>
+                    <form class="email-form">
+                        <input type="email" placeholder="Your email address" class="email-input" required>
+                        <button type="submit" class="submit-btn">Subscribe</button>
+                    </form>
                 </div>
             </div>
-        
-            <!-- Copyright -->
+
+            <div class="payment-methods">
+                <h3>We Accept</h3>
+                <div class="payment-icons">
+                    <i class="payment-icon visa"></i>
+                    <i class="payment-icon mastercard"></i>
+                    <i class="payment-icon amex"></i>
+                    <i class="payment-icon gpay"></i>
+                    <i class="payment-icon paytm"></i>
+                    <i class="payment-icon upi"></i>
+                </div>
+            </div>
+
             <div class="footer-bottom">
-                <p>© 2025, GadgetStore <a href="https://shopify.com">Powered by Shopify</a></p>
+                <p>&copy; 2025 AK Mobile Case. All Rights Reserved.</p>
+                <p>Powered by <a href="https://shopify.com">Shopify</a></p>
             </div>
         </div>
     </footer>
@@ -336,6 +195,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script>
         // Fix for hover and click events conflict
         $(document).ready(function(){

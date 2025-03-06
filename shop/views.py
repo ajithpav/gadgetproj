@@ -98,9 +98,6 @@ def collection(request):
     products = Product.objects.all()  # Ensure this query is valid
     return render(request, 'shop/collection.html', {'products': products})
 
-
-
-
 def reviews(request):
     # Fetch all reviews
     reviews = Review.objects.all()

@@ -475,6 +475,246 @@ body {
     z-index: 1;
 }
 
+/* Footer Styles */
+.footer {
+    background-color: #222;
+    color: #f5f5f5;
+    padding: 60px 0 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Company Info Section */
+.footer h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer h3:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #4a90e2;
+}
+
+.company-desc {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.address p {
+    margin-bottom: 5px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* Navigation Menu */
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 12px;
+}
+
+.footer-nav a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    line-height: 1.5;
+}
+
+.footer-nav a:hover {
+    color: #4a90e2;
+}
+
+/* Contact Information */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.icon {
+    margin-right: 10px;
+    color: #4a90e2;
+    font-size: 16px;
+}
+
+.contact-list a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-list a:hover {
+    color: #4a90e2;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #4a90e2;
+    transform: translateY(-3px);
+}
+
+/* Newsletter */
+.newsletter p {
+    color: #ccc;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.email-form {
+    display: flex;
+    margin-top: 15px;
+}
+
+.email-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+}
+
+.email-input::placeholder {
+    color: #aaa;
+}
+
+.submit-btn {
+    padding: 0 20px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+}
+
+.submit-btn:hover {
+    background-color: #2a70c2;
+}
+
+/* Payment Methods */
+.payment-methods {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.payment-icon {
+    width: 40px;
+    height: 25px;
+    background-color: #444;
+    border-radius: 4px;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    color: #999;
+    font-size: 14px;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+.footer-bottom a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .email-form {
+        flex-direction: column;
+    }
+    
+    .email-input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    
+    .submit-btn {
+        border-radius: 4px;
+        padding: 12px;
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .footer-content {
